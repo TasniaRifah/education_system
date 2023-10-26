@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -18,15 +19,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+
+// Route::get('/teacher', function () {
+//     return view('auth.login');
+// })->name('teacher.loginpage');
 
 // Route::get('/dashboard', function () {
 //     $teachers=User::all();
 //     $students=Student::all();
 //     return view('dashboard',compact('teachers','students'));
 // })->middleware(['auth', 'verified'])->;
+Route::get('/dashboard', function () {
+    $teachers=User::all();
+    $students=Student::all();
+    return view('dashboard',compact('teachers','students'));
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,11 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/students',StudentController::class);
     Route::resource('/results',ResultController::class);
-    Route::get('/', function () {
-        $teachers=User::all();
-        $students=Student::all();
-        return view('dashboard',compact('teachers','students'));
-    })->middleware('verified')->name('dashboard');
+    
+   
 });
 
 require __DIR__.'/auth.php';

@@ -24,6 +24,13 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
+            <div class="mt-4">
+                <x-input-label for="email" :value="__('email')" />
+                <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')"
+                    required />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+
             <!-- Email Address -->
 
             <div class="mt-4">
@@ -71,6 +78,13 @@
                 <x-text-input id="permanent_address" class="block mt-1 w-full" type="text" name="permanent_address"
                     :value="old('permanent_address')" />
                 <x-input-error :messages="$errors->get('permanent_address')" class="mt-2" />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="password" :value="__('password')" />
+                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" :value="old('password')"
+                    required />
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
             <!-- Password -->

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Result;
 use App\Models\Student;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -30,6 +33,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>['required',],
+            'email'=>['required',],
+            'roll'=>['required',],
+            'reg'=>['required',],
+            'password'=>['required'],
+        ]);
+
         $user = Student::create([
             'name' => $request->name,
             'roll' => $request->roll,
@@ -38,9 +49,13 @@ class StudentController extends Controller
             'gender' => $request->gender,
             'mobile_number' => $request->mobile_number,
             'present_address' => $request->present_address,
-            'permanent_address' => $request->permanent_address
+            'permanent_address' => $request->permanent_address,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
+        event(new Registered($user));
+        Auth::login($user);
         return redirect('/students');
     }
 

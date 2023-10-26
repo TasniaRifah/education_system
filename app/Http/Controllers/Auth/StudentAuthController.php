@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class AuthenticatedSessionController extends Controller
+class StudentAuthController extends Controller
 {
     /**
      * Display the login view.
      */
     public function create()
     {
-        return view('auth.login');
+        return view('studentlogin.login');
     }
 
     /**

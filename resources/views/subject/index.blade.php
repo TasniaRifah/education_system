@@ -17,46 +17,19 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Student Name
+                        Subject Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                       Email
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Roll
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Registration
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Class
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Gender
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Guardian Mobile Number
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Present Address
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Permanent Address
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
+                        Code
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            {{-- <tbody>
                 @foreach ($students as $student)
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4">
                             {{ $student->name }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $student->email }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $student->roll }}
@@ -90,7 +63,7 @@
 
 
 
-            </tbody>
+            </tbody> --}}
         </table>
     </div>
 
